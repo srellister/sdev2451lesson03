@@ -1,24 +1,24 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 const EMPTY_FORM = {
-  vehicle: '',
-  driver: '',
-  start_location: '',
-  end_location: '',
-  start_time: '',
-}
+  vehicle: "",
+  driver: "",
+  start_location: "",
+  end_location: "",
+  start_time: "",
+};
 
 function TripForm({ vehicles, drivers, onSubmit }) {
-  const [form, setForm] = useState(EMPTY_FORM)
+  const [form, setForm] = useState(EMPTY_FORM);
 
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    setForm({ ...form, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
-    onSubmit(form)
-    setForm(EMPTY_FORM)
+    e.preventDefault();
+    onSubmit(form);
+    setForm(EMPTY_FORM);
   }
 
   return (
@@ -27,8 +27,9 @@ function TripForm({ vehicles, drivers, onSubmit }) {
         <h3 className="card-title text-base-content">Trip Details</h3>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-
-          <div className="divider divider-start text-xs text-base-content/50 mt-0 mb-0">Assignment</div>
+          <div className="divider divider-start text-xs text-base-content/50 mt-0 mb-0">
+            Assignment
+          </div>
 
           <label className="form-control w-full">
             <div className="label pb-1">
@@ -41,7 +42,9 @@ function TripForm({ vehicles, drivers, onSubmit }) {
               className="select select-bordered w-full"
               required
             >
-              <option value="" disabled>Select a vehicle</option>
+              <option value="" disabled>
+                Select a vehicle
+              </option>
               {vehicles.map((v) => (
                 <option key={v.id} value={v.id}>
                   {v.year} {v.make} {v.model} — {v.license_plate}
@@ -61,7 +64,9 @@ function TripForm({ vehicles, drivers, onSubmit }) {
               className="select select-bordered w-full"
               required
             >
-              <option value="" disabled>Select a driver</option>
+              <option value="" disabled>
+                Select a driver
+              </option>
               {drivers.map((d) => (
                 <option key={d.id} value={d.id}>
                   {d.name} — {d.license_number}
@@ -70,7 +75,9 @@ function TripForm({ vehicles, drivers, onSubmit }) {
             </select>
           </label>
 
-          <div className="divider divider-start text-xs text-base-content/50 mt-0 mb-0">Route</div>
+          <div className="divider divider-start text-xs text-base-content/50 mt-0 mb-0">
+            Route
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <label className="form-control w-full">
@@ -104,7 +111,9 @@ function TripForm({ vehicles, drivers, onSubmit }) {
             </label>
           </div>
 
-          <div className="divider divider-start text-xs text-base-content/50 mt-0 mb-0">Schedule</div>
+          <div className="divider divider-start text-xs text-base-content/50 mt-0 mb-0">
+            Schedule
+          </div>
 
           <label className="form-control w-full">
             <div className="label pb-1">
@@ -125,11 +134,10 @@ function TripForm({ vehicles, drivers, onSubmit }) {
               Create Trip
             </button>
           </div>
-
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default TripForm
+export default TripForm;
