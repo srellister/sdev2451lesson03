@@ -43,7 +43,6 @@ function CreateTripPage() {
       onSuccess: () => navigate("/trips"),
     });
     // // In a real app: POST to /api/v1/trips/ then navigate
-    console.log("New trip submitted:", formData);
     // navigate("/trips");
   }
 

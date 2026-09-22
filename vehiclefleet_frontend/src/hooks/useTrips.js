@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { fetchTrips, createTrip } from "../api/fleet";
+import { fetchTrips, createTrip as createTripApi } from "../api/fleet";
 
 export function useTrips() {
   const {
@@ -17,7 +17,10 @@ export function useTrips() {
 export function useCreateTrip() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (newTrip) => createTrip(newTrip),
+    mutationFn: (newTrip) => {
+      console.log("useCreateTrip entered");
+      createTripApi(newTrip);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["trips"] });
     },

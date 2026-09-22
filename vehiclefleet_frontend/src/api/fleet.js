@@ -18,11 +18,11 @@ export async function fetchTrips() {
   return response.json();
 }
 
-export async function createTrip() {
-  console.log("--> Fleet API createTrip reached with:", newTripData);
-  const response = await fetch(`${BASE_URL}/trips`, {
+export async function createTrip(data) {
+  console.log("--> Fleet API createTrip reached with:", data);
+  const response = await fetch(`${BASE_URL}/trips/`, {
     method: "POST",
-    header: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   if (!response.ok) throw new Error("Failed to create trip");
